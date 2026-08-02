@@ -1,0 +1,192 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — "Connect teams" editorial illustration style.
+ * Cream paper background, pure black ink, electric yellow + soft pink accents.
+ */
+
+@theme inline {
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: var(--radius);
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-4xl: 40px;
+  --font-sans: var(--font-sans-stack);
+  --font-mono: var(--font-mono-stack);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-pink: var(--brand-pink);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-amber: var(--brand-amber);
+  --color-brand-red: var(--brand-red);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-green: var(--brand-green);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --shadow-notion: var(--shadow-elevated);
+}
+
+:root {
+  --radius: 16px;
+  --font-sans-stack: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-mono-stack: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* paper neutrals */
+  --background: oklch(0.968 0.017 95); /* warm cream page */
+  --foreground: oklch(0.16 0 0); /* ink black */
+  --surface: oklch(0.99 0.008 95); /* card cream */
+  --surface-2: oklch(0.945 0.014 95);
+  --card: oklch(0.99 0.008 95);
+  --card-foreground: oklch(0.16 0 0);
+  --popover: oklch(0.99 0.008 95);
+  --popover-foreground: oklch(0.16 0 0);
+  --primary: oklch(0.16 0 0);
+  --primary-foreground: oklch(0.99 0.008 95);
+  --secondary: oklch(0.93 0.19 106); /* yellow */
+  --secondary-foreground: oklch(0.16 0 0);
+  --muted: oklch(0.945 0.014 95);
+  --muted-foreground: oklch(0.45 0.01 80);
+  --accent: oklch(0.93 0.19 106);
+  --accent-foreground: oklch(0.16 0 0);
+  --destructive: oklch(0.55 0.21 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.16 0 0 / 100%);
+  --input: oklch(0.16 0 0);
+  --ring: oklch(0.16 0 0);
+
+  /* brand accents */
+  --brand-yellow: oklch(0.93 0.19 106);
+  --brand-pink: oklch(0.88 0.055 38);
+  --brand-blue: oklch(0.16 0 0);
+  --brand-amber: oklch(0.93 0.19 106);
+  --brand-red: oklch(0.55 0.21 27);
+  --brand-orange: oklch(0.75 0.16 46);
+  --brand-purple: oklch(0.16 0 0);
+  --brand-teal: oklch(0.16 0 0);
+  --brand-green: oklch(0.55 0.15 152);
+
+  --shadow-elevated: 4px 4px 0 oklch(0.16 0 0);
+}
+
+.dark {
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: oklch(0.93 0.015 95);
+    color: var(--color-foreground);
+    font-family: var(--font-sans-stack);
+    font-size: 16px;
+    line-height: 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
+}
+
+/* Ink-outlined panel, the signature of the layout */
+@utility glass {
+  background: var(--surface);
+  border: 2px solid var(--foreground);
+  border-radius: 20px;
+}
+
+@utility glass-soft {
+  background: var(--surface);
+  border: 2px solid var(--foreground);
+  border-radius: 14px;
+}
+
+@utility ink-card {
+  border: 2px solid var(--foreground);
+  border-radius: 20px;
+}
+
+@keyframes pop-check {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ring-pulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes draw-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes line-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
